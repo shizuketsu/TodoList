@@ -1,0 +1,3 @@
+abobka;Secondary
+adadda;Primary
+ab;Primary
