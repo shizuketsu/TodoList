@@ -15,6 +15,18 @@ app.post('/api/addTask', async (req, res) => {
     const { name, prior } = req.body;
     const newLine = `${name};${prior}`;
     addLineToBeginningStream(path.join(__dirname, 'tasks.txt'), newLine);
+
+    return res.send('1');
+});
+
+app.post('/api/deleteTask', async (req, res) => {
+    const { text } = req.body;
+    const filepath = path.join(__dirname, 'tasks.txt');
+
+    const lines = fs.readFileSync(filepath, 'utf-8').split('\n');
+    const updatedLines = lines.filter(line => line.split(';')[0].trim() !== text.trim());
+    fs.writeFileSync(filepath, updatedLines.join('\n'));
+
     return res.send('1');
 });
 

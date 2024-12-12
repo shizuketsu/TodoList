@@ -21,6 +21,7 @@ export default function AddTaskMenu() {
             });
 
             toggleIsOpen('');
+            window.location.reload();
         } catch(err) {
             console.log(err);
         }
